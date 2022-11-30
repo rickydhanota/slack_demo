@@ -1,26 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const userSlice = createSlice({
-  name: 'user',
+export const appSlice = createSlice({
+  name: 'app',
   initialState:{
-    user: null,
+    roomId: null,
   },
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    login: (state, action) => {
-        state.user = action.payload;
+    enterRoom : (state, action) => {
+      state.roomId = action.payload.roomId;
     },
-    logout: (state) => {
-        state.user = null;
-    }
   },
 });
 
-export const { login, logout } = userSlice.actions;
+export const { enterRoom } = appSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectUser = (state) => state.user.user;
+export const selectRoomId = (state) => state.app.roomId;
 
-export default userSlice.reducer;
+export default appSlice.reducer;

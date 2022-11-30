@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#Notes:
+#Using react-redux
+#Practice with Materual UI
+#Using react-firebase-hooks
+#Deployment with firebase for demo purposes

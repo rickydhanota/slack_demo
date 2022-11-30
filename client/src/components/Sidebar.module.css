@@ -5,6 +5,16 @@
     border-top: 1px solid #49274b;
     max-width: 260px;
     margin-top: 60px;
+    overflow: auto;
+}
+
+/* .sidebar_container:hover {
+    overflow-y: scroll;
+} */
+
+.sidebar_container::-webkit-scrollbar {
+    display: none;
+    /* background-color: transparent; */
 }
 
 .sidebar_header {

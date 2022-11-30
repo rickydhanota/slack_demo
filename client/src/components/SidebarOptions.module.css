@@ -13,10 +13,20 @@
     background-color: #340e36;
 }
 
-.sidebarOption_container >h3 {
+.sidebarOption_container > h3 {
     font-weight: 500;
+    /* padding-left: 10px; */
+}
+
+.sidebarOption_chat{
+    padding-left: 10px;
 }
 
 span{
-    padding: 15px;    
+    padding: 5px;    
+}
+
+.sidebarOption_channel {
+    padding: 10px 0;
+    font-weight: 300;
 }
