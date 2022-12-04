@@ -1,0 +1,21 @@
+.message_container{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.message_info > img {
+    height: 50px;
+    border-radius: 8px;
+}
+
+.message_info > h4 > span {
+    color: grey;
+    font-weight: 300;
+    margin-left: 4px;
+    font-size: 10px;
+}
+
+.message_info {
+    padding-left: 10px;
+}
