@@ -3,6 +3,8 @@ import styles from "./ChatInput.module.css";
 import Button from '@mui/material/Button';
 import { db } from './firebase';
 import firebase from 'firebase/compat/app';
+import { auth } from './firebase';
+import {useAuthState} from "react-firebase-hooks/auth";
 
 const ChatInput = (props) => {
 
@@ -11,6 +13,8 @@ const ChatInput = (props) => {
 
     // const inputRef = useRef(null);
     const [input, setInput] = useState("");
+    const [user] = useAuthState(auth);
+
 
     const sendMessage = (e) => {
         // console.log(channelId);
@@ -23,8 +27,8 @@ const ChatInput = (props) => {
             // message: inputRef.current.value,
             message: input,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            user: "Ricky Dhanota",
-            userImage: null
+            user: user.displayName,
+            userImage: user.photoURL,
         });
 
         // chatRef.current.scrollIntoView({

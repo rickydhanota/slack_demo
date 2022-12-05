@@ -37,38 +37,43 @@ const Chat = (props) => {
 
     return (
         <div className= {styles.chat_container}>
-            <div className= {styles.chat_header}>
-                <div className={styles.chat_headerLeft}>
-                    <h4><strong>#{roomName}</strong></h4>
-                    <StarBorderOutlinedIcon className= {styles.chat_headerLeft_Star}/>
+
+            {roomDetails && roomMessages && (
+                <>
+                
+                <div className= {styles.chat_header}>
+                    <div className={styles.chat_headerLeft}>
+                        <h4><strong>#{roomName}</strong></h4>
+                        <StarBorderOutlinedIcon className= {styles.chat_headerLeft_Star}/>
+                    </div>
+
+                    <div className={styles.chat_headerRight}>
+                        <p>
+                            <InfoOutlinedIcon className= {styles.chat_headerRight_Info}/> Details
+                        </p>
+                    </div>
                 </div>
 
-                <div className={styles.chat_headerRight}>
-                    <p>
-                        <InfoOutlinedIcon className= {styles.chat_headerRight_Info}/> Details
-                    </p>
+                <div className= {styles.chat_messages}>
+                    {roomMessages?.docs.map(doc => {
+                        const {message, timestamp, user, userImage} = doc.data();
+                        return (
+                            <Message 
+                                key={doc.id}
+                                message = {message}
+                                timestamp = {timestamp}
+                                user = {user}
+                                userImage = {userImage}
+                            />
+                        )
+                    })}
+                    <div className={styles.chat_bottom} ref = {chatRef}>
+
+                    </div>
                 </div>
-            </div>
-
-            <div className= {styles.chat_messages}>
-                {roomMessages?.docs.map(doc => {
-                    const {message, timestamp, user, userImage} = doc.data();
-                    return (
-                        <Message 
-                            key={doc.id}
-                            message = {message}
-                            timestamp = {timestamp}
-                            user = {user}
-                            userImage = {userImage}
-                        />
-                    )
-                })}
-                <div className={styles.chat_bottom} ref = {chatRef}>
-
-                </div>
-            </div>
-
-            <ChatInput channelId = {roomId} channelName = {roomName} chatRef = {chatRef}/>
+                <ChatInput channelId = {roomId} channelName = {roomName} chatRef = {chatRef}/>
+            </>
+            )}
         </div>
     );
 };

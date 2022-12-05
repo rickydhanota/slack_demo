@@ -13,12 +13,14 @@ import FileCopyIcon from '@mui/icons-material/FileCopy';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
-import { db } from './firebase';
+import { auth, db } from './firebase';
 import {useCollection} from "react-firebase-hooks/firestore";
+import {useAuthState} from "react-firebase-hooks/auth";
 
 const Sidebar = (props) => {
 
-    const [channels, loading, error] = useCollection(db.collection("rooms"))
+    const [channels, loading] = useCollection(db.collection("rooms"))
+    const [user] = useAuthState(auth);
 
     return (
         <div className= {styles.sidebar_container}>
@@ -27,7 +29,7 @@ const Sidebar = (props) => {
                     <h2>Chat HQ</h2>
                     <h3>
                         <FiberManualRecordIcon className= {styles.fiber_icon}/>
-                        Ricky Dhanota
+                        {user.displayName}
                     </h3>
                 </div>
                 <CreateIcon className= {styles.pencil_icon}/>

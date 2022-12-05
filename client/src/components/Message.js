@@ -4,6 +4,7 @@ import styles from "./Message.module.css";
 const Message = (props) => {
 
     const {message, timestamp, user, userImage} = props;
+    // console.log(userImage);
 
     return (
         <div className= {styles.message_container}>
